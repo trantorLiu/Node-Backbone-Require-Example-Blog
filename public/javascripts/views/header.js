@@ -7,10 +7,11 @@ define('HeaderView', [
 	var HeaderView;
 
 	HeaderView = backbone.View.extend({
-		initialize: function () {
+		id: 'header-view'
+		, initialize: function () {
 			var ajaxLoader;
 
-			this.template = _.template(tpl);
+			this.compiled = _.template(tpl);
 
 			$('body').ajaxStart(function () {
 				ajaxLoader = ajaxLoader || $('#ajax-loader');
@@ -20,7 +21,7 @@ define('HeaderView', [
 			});
 		}
 		, render: function () {
-			this.$el.html(this.template());
+			this.$el.html(this.compiled());
 			return this;
 		}
 	});

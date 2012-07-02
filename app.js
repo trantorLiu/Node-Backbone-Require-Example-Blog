@@ -4,9 +4,12 @@
 
 var express = require('express')
 	, mongoose = require('mongoose')
-  , http = require('http');
+	, http = require('http')
+	, config = require('./config');
 
 var app = express();
+
+mongoose.connect('mongodb://localhost/' + config.DB_NAME);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);

@@ -1,0 +1,7 @@
+<% _.each(posts, function (post) { %>
+	<div class="post">
+		<h4 class="post-title"><a href="#/post/<%= post._id %>"><%= post.title %></a></h4>
+		<p class="post-author"><%= post.author %></p>
+		<p class="post-body"><%= post.body %></p>
+	</div>
+<% }); %>

@@ -20,8 +20,14 @@ requirejs.config({
 		, jquery			: 'lib/jquery'
 		, underscore	:	'lib/underscore-amd'
 		, backbone		: 'lib/backbone-amd'
+		, PostModel		: 'models/post'
+		, PostCollection : 'collections/post'
 		, HeaderView	: 'views/header'
 		, HomeView		: 'views/home'
+		, PostAddView	: 'views/post/add'
+		, PostShowView: 'views/post/show'
+		, PostListView: 'views/post/list'
+		, PostEditView: 'views/post/edit'
 	}
 });
 

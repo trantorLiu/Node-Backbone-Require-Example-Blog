@@ -6,7 +6,7 @@ var PostSchema = new Schema({
 	title: String
 	, author: String
 	, body: String
-	, creataAt: { 
+	, date: { 
 		type: Date
 		, default: Date.now
 	}

@@ -8,10 +8,10 @@ define('HomeView', [
 
 	HomeView = backbone.View.extend({
 		initialize: function () {
-			this.template = _.template(tpl);
+			this.compiled = _.template(tpl);
 		}
 		, render: function () {
-			this.$el.html(this.template());
+			this.$el.html(this.compiled());
 			return this;
 		}
 	});

@@ -6,11 +6,19 @@ body {
 a {
   color: #00B7FF;
 }
-#nav-bar ul {
+span.link {
+  color: #00B7FF;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* header view */
+#header-view ul {
 	padding: 0;
 }
-#nav-bar li {
+#header-view li {
 	list-style-type: none;
 	padding-right: 10px;
 	display: inline-block;
 }
+/* end header view */
