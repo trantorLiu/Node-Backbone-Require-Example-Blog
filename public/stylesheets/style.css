@@ -8,17 +8,17 @@ a {
 }
 span.link {
   color: #00B7FF;
-	text-decoration: underline;
-	cursor: pointer;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* header view */
 #header-view ul {
-	padding: 0;
+  padding: 0;
 }
 #header-view li {
-	list-style-type: none;
-	padding-right: 10px;
-	display: inline-block;
+  list-style-type: none;
+  padding-right: 10px;
+  display: inline-block;
 }
 /* end header view */

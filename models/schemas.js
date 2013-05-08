@@ -1,15 +1,16 @@
-var mongoose = require('mongoose')
-	, Schema = mongoose.Schema
-	, ObjectId = Schema.ObjectId;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId,
+    PostSchema;
 
-var PostSchema = new Schema({
-	title: String
-	, author: String
-	, body: String
-	, date: { 
-		type: Date
-		, default: Date.now
-	}
+PostSchema = new Schema({
+  title: String,
+  author: String,
+  body: String,
+  date: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 module.exports.PostSchema = PostSchema;

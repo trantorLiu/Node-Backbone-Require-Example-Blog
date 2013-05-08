@@ -1,4 +1,4 @@
 module.exports = {
-	DB_NAME: 'backbone-sample-blog'
-	, API: '/api/v1'
+  DB_NAME: 'node-backbone-require-sample-blog',
+  API: '/api/v1'
 };
