@@ -27,10 +27,6 @@ define('router', [
       this.postAddView;
       this.headerView = new HeaderView();
 
-      // cached elements
-      this.elms = {
-        'page-content': $('.page-content')
-      };
       $('header').hide().html(this.headerView.render().el).fadeIn('slow');
       $('footer').fadeIn('slow');
     },
@@ -40,16 +36,22 @@ define('router', [
       if (!this.homeView) {
         this.homeView = new HomeView();
       }
-      this.elms['page-content'].html(this.homeView.render().el);
+      this.appView.show(this.homeView);
     },
     showPostList: function() {
-      var that = this;
+      var that, view, collection;
 
-      if (!this.postListView) {
-        this.postListView = new PostListView();
-      }
-      this.postListView.render(function() {
-        that.elms['page-content'].html(that.postListView.el);
+      that = this;
+      collection = new PostCollection;
+
+      collection.fetch({
+        success: function(collection, res) {
+          view = new PostListView({ collection: collection });
+          that.appView.show(view);
+        },
+        error: function(collection, res) {
+          // TODO
+        }
       });
 
     },
@@ -65,7 +67,7 @@ define('router', [
       model.fetch({
         success: function(model, res) {
           view = new PostShowView({ model: model });
-          that.elms['page-content'].html(view.render().el);
+          that.appView.show(view);
 
           view.model.on('delete-success', function() {
             delete view;
@@ -84,7 +86,7 @@ define('router', [
         model: new Post()
       });
 
-      this.elms['page-content'].html(view.render().el);
+      this.appView.show(view);
       view.on('back', function() {
         delete view;
         that.navigate('#/post/list', { trigger: true });
@@ -106,7 +108,7 @@ define('router', [
       post.fetch({
         success: function(model, res) {
           view = new PostEditView({ model: model });
-          that.elms['page-content'].html(view.render().el);
+          that.appView.show(view);
 
           view.on('back', function() {
             delete view;

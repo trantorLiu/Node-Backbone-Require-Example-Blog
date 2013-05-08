@@ -13,7 +13,7 @@ requirejs.config({
    * Modified Underscore and Backbone to be AMD compatible (define themselves)
    * since it didn't work properly with the RequireJS shim when optimizing
    */
-  paths      : {
+  paths            : {
     app            : 'app',
     router         : 'router',
     text           : 'lib/text',

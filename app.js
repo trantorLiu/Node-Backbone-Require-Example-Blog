@@ -27,9 +27,9 @@ if (cluster.isMaster) {
       server;
 
   if (config.DB_USER && config.DB_PASSWORD) {
-    mongoose.connect('mongodb://' + config.DB_USER + ':' + config.DB_PASSWORD + '@localhost/' + config.DB_NAME);
+    mongoose.createConnection('mongodb://' + config.DB_USER + ':' + config.DB_PASSWORD + '@localhost/' + config.DB_NAME);
   } else {
-    mongoose.connect('mongodb://localhost/' + config.DB_NAME);
+    mongoose.createConnection('mongodb://localhost/' + config.DB_NAME);
   }
 
   mongoose.connect('mongodb://localhost/' + config.DB_NAME);
