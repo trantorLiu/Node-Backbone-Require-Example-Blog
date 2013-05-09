@@ -21,14 +21,15 @@ define('PostShowView', [
       'click #delete': 'delete'
     },
     delete: function(e) {
+      var that = this;
       e.preventDefault();
       this.model.destroy({
         sync: true,
         success: function(model) {
-          model.trigger('success');
+          that.trigger('success');
         },
         error: function() {
-          // TODO handle 404 and 500
+          that.trigger('router:alert');
         }
       });
     }

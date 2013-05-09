@@ -46,7 +46,7 @@ define('router', [
 
       collection.fetch({
         success: function(collection, res) {
-          view = new PostListView({ collection: collection });
+          view = new PostListView({collection: collection});
           that.appView.show(view);
         },
         error: that.alert
@@ -64,13 +64,14 @@ define('router', [
       });
       model.fetch({
         success: function(model, res) {
-          view = new PostShowView({ model: model });
+          view = new PostShowView({model: model});
           that.appView.show(view);
 
-          view.model.on('success', function() {
+          view.on('success', function() {
             delete view;
-            that.navigate('#/post/list', { trigger: true });
+            that.navigate('#/post/list', {trigger: true});
           });
+          view.on('router:alert', that.alert);
         },
         error: that.alert
       });
@@ -83,14 +84,11 @@ define('router', [
       });
 
       this.appView.show(view);
-      view.on('back', function() {
+      view.on('success', function(id) {
         delete view;
-        that.navigate('#/post/list', { trigger: true });
+        that.navigate('#/post/' + id, {trigger: true});
       });
-      view.model.on('success', function(id) {
-        delete view;
-        that.navigate('#/post/' + id, { trigger: true });
-      });
+      view.on('router:alert', that.alert);
     },
     editPost: function(id) {
       var that, view, post;
@@ -103,17 +101,14 @@ define('router', [
       });
       post.fetch({
         success: function(model, res) {
-          view = new PostEditView({ model: model });
+          view = new PostEditView({model: model});
           that.appView.show(view);
 
-          view.on('back', function() {
+          view.on('success', function() {
             delete view;
-            that.navigate('#/post/' + id, { trigger: true });
+            that.navigate('#/post/' + id, {trigger: true});
           });
-          view.model.on('success', function() {
-            delete view;
-            that.navigate('#/post/' + id, { trigger: true });
-          });
+          view.on('router:alert', that.alert);
         },
         error: that.alert
       });

@@ -6,11 +6,6 @@ body {
 a {
   color: #00B7FF;
 }
-span.link {
-  color: #00B7FF;
-  text-decoration: underline;
-  cursor: pointer;
-}
 
 /* header view */
 #header-view ul {

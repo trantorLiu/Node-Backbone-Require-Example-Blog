@@ -39,14 +39,10 @@ define('PostEditView', [
         silent  : false,
         sync    : true,
         success : function(model, res) {
-          if (res && res.error) {
-            // TODO
-          } else {
-            model.trigger('success', model.id);
-          }
+          that.trigger('success', model.id);
         },
         error: function(model, res) {
-          // TODO
+          that.trigger('router:alert');
         }
       });
     },
