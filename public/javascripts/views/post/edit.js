@@ -20,8 +20,7 @@ define('PostEditView', [
       return this;
     },
     events: {
-      'click #post-edit-save': 'savePost'
-                        , 'click #post-edit-back': 'back'
+      'click #save': 'savePost'
     },
     savePost: function(e) {
       var title, author, body, that;
@@ -29,8 +28,8 @@ define('PostEditView', [
       e.preventDefault();
 
       that = this;
-      title = $.trim($('#post-edit-title').val());
-      body = $.trim($('#post-edit-body').val());
+      title = $.trim(this.$el.find('#title').val());
+      body = $.trim(this.$el.find('#body').val());
 
       this.model.save({
         title   : title,
@@ -43,7 +42,7 @@ define('PostEditView', [
           if (res && res.error) {
             // TODO
           } else {
-            model.trigger('save-success', model.get('_id'));
+            model.trigger('success', model.id);
           }
         },
         error: function(model, res) {
@@ -51,10 +50,6 @@ define('PostEditView', [
         }
       });
     },
-    back: function(e) {
-      e.preventDefault();
-      this.trigger('back');
-    }
   });
 
   return PostEditView;

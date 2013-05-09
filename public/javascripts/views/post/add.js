@@ -16,31 +16,28 @@ define('PostAddView', [
       return this;
     },
     events: {
-      'click #post-add-submit': 'addPost',
-      'click #post-add-back': 'back'
+      'click #submit': 'submit'
     },
-    addPost: function(e) {
+    submit: function(e) {
       var title, author, body, that;
 
       e.preventDefault();
 
       that = this;
-      title = $.trim($('#post-add-title').val());
-      author = $.trim($('#post-add-author').val());
-      body = $.trim($('#post-add-body').val());
+      title = $.trim(this.$el.find('#title').val());
+      author = $.trim(this.$el.find('#author').val());
+      body = $.trim(this.$el.find('#body').val());
 
       this.model.save({
         title   : title,
         author  : author,
         body    : body
       }, {
-        silent  : false,
-        sync    : true,
-        success : function(model, res) {
+        success: function(model, res) {
           if (res && res.error) {
             // TODO
           } else {
-            model.trigger('add-success', model.get('_id'));
+            model.trigger('success', model.id);
           }
         },
         error: function(model, res) {
@@ -48,10 +45,6 @@ define('PostAddView', [
         }
       });
     },
-    back: function(e) {
-      e.preventDefault();
-      this.trigger('back');
-    }
   });
 
   return PostAddView;

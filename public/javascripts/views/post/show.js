@@ -18,14 +18,14 @@ define('PostShowView', [
       return this;
     },
     events: {
-      'click .post-show-delete': 'deletePost'
+      'click #delete': 'delete'
     },
-    deletePost: function(e) {
+    delete: function(e) {
       e.preventDefault();
       this.model.destroy({
         sync: true,
         success: function(model) {
-          model.trigger('delete-success');
+          model.trigger('success');
         },
         error: function() {
           // TODO handle 404 and 500

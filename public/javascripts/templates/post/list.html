@@ -1,7 +1,10 @@
 <% _.each(posts, function (post) { %>
 <div class="post">
-  <h4 class="post-title"><a href="#/post/<%= post._id %>"><%= post.title %></a></h4>
-  <p class="post-author"><%= post.author %></p>
-  <p class="post-body"><%= post.body %></p>
+  <h4 class="title"><a href="#/post/<%= post._id %>"><%= post.title %></a></h4>
+  <p class="author"><%= post.author %></p>
+  <p class="body"><%= post.body %></p>
 </div>
 <% }); %>
+<% if (_.isEmpty(posts)) { %>
+<p>Empty</p>
+<% } %>

@@ -13,7 +13,7 @@ define('router', [
   var router;
 
   router = backbone.Router.extend({
-    routes            : {
+    routes: {
       ''              : 'home',
       'home'          : 'home',
       'post/list'     : 'showPostList',
@@ -49,9 +49,7 @@ define('router', [
           view = new PostListView({ collection: collection });
           that.appView.show(view);
         },
-        error: function(collection, res) {
-          // TODO
-        }
+        error: that.alert
       });
 
     },
@@ -69,14 +67,12 @@ define('router', [
           view = new PostShowView({ model: model });
           that.appView.show(view);
 
-          view.model.on('delete-success', function() {
+          view.model.on('success', function() {
             delete view;
             that.navigate('#/post/list', { trigger: true });
           });
         },
-        error: function(model, res) {
-          // TODO
-        }
+        error: that.alert
       });
     },
     addPost: function() {
@@ -91,7 +87,7 @@ define('router', [
         delete view;
         that.navigate('#/post/list', { trigger: true });
       });
-      view.model.on('add-success', function(id) {
+      view.model.on('success', function(id) {
         delete view;
         that.navigate('#/post/' + id, { trigger: true });
       });
@@ -114,15 +110,16 @@ define('router', [
             delete view;
             that.navigate('#/post/' + id, { trigger: true });
           });
-          view.model.on('save-success', function() {
+          view.model.on('success', function() {
             delete view;
             that.navigate('#/post/' + id, { trigger: true });
           });
         },
-        error: function(model, res) {
-          // TODO
-        }
+        error: that.alert
       });
+    },
+    alert: function() {
+      alert('Error occurred');
     }
   });
 

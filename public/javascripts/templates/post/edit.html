@@ -1,11 +1,15 @@
-<label for="post-edit-title">Title</label>
-<input type="text" name="title" id="post-edit-title" value="<%= post.title %>"/> 
+<label for="title">Title</label>
 <br />
-<label for="post-edit-author">Author</label>
-<input type="text" name="author" id="post-edit-author" value="<%= post.author %>"/> 
+<input type="text" name="title" id="title" value="<%= post.title %>" size="36" />
 <br />
-<label for="post-edit-body">Body</label>
-<textarea name="body" id="post-edit-body"><%= post.body %></textarea>
+<label for="author">Author</label>
 <br />
-<button id="post-edit-back">Cancel</button>
-<button id="post-edit-save">Save</button/> 
+<input type="text" name="author" id="author" value="<%= post.author %>" size="36"/>
+<br />
+<label for="body">Body</label>
+<br />
+<textarea name="body" id="body" rows="10" cols="36"><%= post.body %></textarea>
+<br />
+<br />
+<button id="save">Save</button/>
+<a href="#/post/<%= post._id %>" id="cancel">Cancel</button>

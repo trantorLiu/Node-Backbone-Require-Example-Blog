@@ -1,5 +1,5 @@
 # Node-Backbone-Require Example Blog
-A RESTful example blog built with Node.js, Backbone.js, Require.js, and Mongoose.
+A RESTful example blog built with Node.js, Backbone.js, Require.js, and MongoDB.
 
 ## Usage
 ```sh

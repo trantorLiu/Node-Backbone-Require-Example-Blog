@@ -8,7 +8,7 @@ define('PostListView', [
   var PostAddView;
 
   PostAddView = backbone.View.extend({
-    id: 'post-add-view',
+    id: 'post-list-view',
     initialize: function(options) {
       this.collection = options.collection;
       this.compiled = _.template(tpl);
